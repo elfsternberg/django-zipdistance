@@ -32,18 +32,22 @@ Standard Usage:
 
 Find all the zipcodes within 50 miles:
 
-    target = Zipmap.objects.get(zipcode = zip_form.cleaned_data['zipcode1'].strip())
-    zips = Zipmap.objects.distance_from(target, 50)
+    from zipdistance.models import ZipDistance
+    target = ZipDistance.objects.get(zipcode = zip_form.cleaned_data['zipcode1'].strip())
+    zips = ZipDistance.objects.distance_from(target, 50)
 
 Find the distance between two zipcodes:
 
-    zip1 = Zipmap.objects.get(zipcode = zip_form.cleaned_data['zipcode1'].strip())
-    zip2 = Zipmap.objects.get(zipcode = zip_form.cleaned_data['zipcode1'].strip())
+    from zipdistance.models import ZipDistance
+    zip1 = ZipDistance.objects.get(zipcode = zip_form.cleaned_data['zipcode1'].strip())
+    zip2 = ZipDistance.objects.get(zipcode = zip_form.cleaned_data['zipcode1'].strip())
     zip1.distance_between(zip_2)
 
 Find all the stores within a given distance.  
 
-    zips = Zipmap.objects.distance_from(target, 50)
+    from zipdistance.models import ZipDistance
+    from yourapp.models import Store
+    zips = ZipDistance.objects.distance_from(target, 50)
     stores = Store.objects.get(zipcode__in = [z.zipcode for z in zips])
 
 That last one's not terribly efficient.  If you used the ZipMap as a
