@@ -10,3 +10,4 @@ indieflix/stages/chi/
 indieflix/static/avatars/
 *.xcf
 common/ctctwspylib/.cache
+build/
